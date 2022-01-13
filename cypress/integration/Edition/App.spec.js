@@ -1,0 +1,11 @@
+it('check if we can load the page', ()=>{
+  cy.visit('http://localhost:3000/')
+  cy.get('button')
+    .should('have.length', 2)
+  cy.get('button').first().should('have.text', 'delete')
+  cy.get('button').last().should('have.text', 'edit').click()
+  cy.get('input').type('hanga')
+  cy.get('button').last().click()
+  cy.get('button').first().click()
+  cy.get('main > div').contains('welcome false')
+})
